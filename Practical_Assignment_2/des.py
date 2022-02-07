@@ -599,11 +599,13 @@ def generate_random_string(length):
 
 # function to flip "amount" bits in a string
 def perturb_string(string, amount):
+    string=string[::-1]
     perturbedString = ""
     for i in range(len(string)):
         if i<amount: 
-            perturbedString += chr(ord(string[i]) ^ 2)
+            perturbedString += chr(ord(string[i]) ^ 8)
         else: perturbedString += string[i]
+    perturbedString=perturbedString[::-1]
     return perturbedString
 
 # calculate hamming distance between bit strings
@@ -621,6 +623,8 @@ def generate_plot(HD,title,initial_distances):
     HD_RoundWise=[initial_distances,]+list(zip(*HD))
     fig = plt.figure(figsize=(10, 8))                           
     plt.boxplot(HD_RoundWise,positions=[l for l in range(0,17)])
+    medians= [ statistics.median(HD_current) for HD_current in HD_RoundWise]
+    plt.plot(medians)
     fig.suptitle("Plot for "+title, fontsize=14, fontweight='bold')
     plt.xlabel('Round Number')
     plt.ylabel('Hamming distance')
@@ -671,6 +675,7 @@ def perform_experiment(change_plain_text,change_key,change_hamming_distance,expe
 
 import string
 import random
+import statistics
 import matplotlib.pyplot as plt
 
 
