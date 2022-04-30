@@ -37,7 +37,7 @@ p,q,s=10007,25247,40639
 # Generate and print random bits
 bbs=BlumBlumShub(p,q,s)
 random_bits=bbs.get_next_num_random_bits(100)
-print("random bits:", random_bits, end="\n\n")
+print("Random bits:", random_bits, end="\n\n")
 
 # Apply freuency test
 frequency_test(random_bits)

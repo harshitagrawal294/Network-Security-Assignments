@@ -38,7 +38,7 @@ bit_sequence =  [0,0,0,1,0,1,1,0,1,1,0,1,1,0,0,1,0,0,0,1,\
 # Generate and print random bits
 eog=ExclusiveORGenerator(bit_sequence)
 random_bits=eog.get_next_num_random_bits(100)
-print("random bits:", random_bits, end="\n\n")
+print("Random bits:", random_bits, end="\n\n")
 
 # Apply freuency test
 frequency_test(random_bits)
